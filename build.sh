@@ -5,7 +5,7 @@ set -e -x -o pipefail
 # Microchip Tools Require i386 Compatability as Dependency
 dpkg --add-architecture i386 
 apt-get update -yq 
-apt-get install -yq --no-install-recommends build-essential bzip2 cpio curl unzip wget libc6:i386 libx11-6:i386 libxext6:i386 libstdc++6:i386 libexpat1:i386  libxext6 libxrender1 libxtst6 libgtk2.0-0 libxslt1.1 libncurses5-dev gcc python3 python3-pip python3.11-venv inetutils-ping openssh-client pkg-config dpkg-dev nano git sudo gnupg lsb-release software-properties-common 
+apt-get install -yq --no-install-recommends build-essential bzip2 cpio curl unzip wget libc6:i386 libx11-6:i386 libxext6:i386 libstdc++6:i386 libexpat1:i386  libxext6 libxrender1 libxtst6 libgtk2.0-0 libxslt1.1 libncurses5-dev gcc python3 python3-pip python3.11-venv inetutils-ping openssh-client pkg-config dpkg-dev nano git sudo gnupg lsb-release software-properties-common procps libusb-1.0-0-dev
 
         
 # Download and Install XC8 Compiler, Current Version
@@ -17,6 +17,10 @@ chmod a+x /tmp/xc8-v3.00-full-install-linux-x64-installer.run
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 wget -O - https://apt.llvm.org/llvm.sh > /tmp/llvm.sh 
 chmod +x /tmp/llvm.sh 
+
+# FUCK YOU MCHP!!!!!!
+tar -xf /opt/installer/MPLABX-*-linux-installer.tar
+USER=root ./MPLABX-*-linux-installer.sh  --nox11 -- --unattendedmodeui none --mode unattended --installdir /opt/microchip/mplabx
 
 /tmp/llvm.sh all
 

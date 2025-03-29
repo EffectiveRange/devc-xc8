@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM effectiverange/mplabx-base-bookworm:latest
 
 ARG BUILD_UID=499
 ARG BUILD_GID=499
@@ -16,6 +16,6 @@ RUN touch /home/crossbuilder/target.ARMHF-BOOKWORM
 COPY build.sh /tmp/build.sh
 RUN /bin/bash /tmp/build.sh
     
-ENV PATH=$PATH:/opt/microchip/xc8/bin
+ENV PATH=$PATH:/opt/microchip/xc8/bin:/opt/microchip/mplabx/mplab_ide/bin
 
 RUN /bin/bash
