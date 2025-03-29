@@ -5,7 +5,7 @@ set -e -x -o pipefail
 # Microchip Tools Require i386 Compatability as Dependency
 dpkg --add-architecture i386 
 apt-get update -yq 
-apt-get install -yq --no-install-recommends build-essential bzip2 cpio curl unzip wget libc6:i386 libx11-6:i386 libxext6:i386 libstdc++6:i386 libexpat1:i386  libxext6 libxrender1 libxtst6 libgtk2.0-0 libxslt1.1 libncurses5-dev gcc python3 python3-pip python3.11-venv inetutils-ping openssh-client pkg-config dpkg-dev nano git sudo gnupg lsb-release software-properties-common procps libusb-1.0-0-dev file less
+apt-get install -yq --no-install-recommends build-essential bzip2 cpio curl unzip wget libc6:i386 libx11-6:i386 libxext6:i386 libstdc++6:i386 libexpat1:i386  libxext6 libxrender1 libxtst6 libgtk2.0-0 libxslt1.1 libncurses5-dev gcc python3 python3-pip python3.11-venv inetutils-ping openssh-client pkg-config dpkg-dev nano git sudo gnupg lsb-release software-properties-common procps libusb-1.0-0-dev file less gdb
 
         
 # Download and Install XC8 Compiler, Current Version
