@@ -18,6 +18,4 @@ RUN /bin/bash /tmp/build.sh
     
 ENV PATH=$PATH:/opt/microchip/xc8/bin
 
-USER crossbuilder
-WORKDIR /home/crossbuilder
 RUN /bin/bash
