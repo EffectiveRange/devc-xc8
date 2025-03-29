@@ -22,6 +22,8 @@ chmod +x /tmp/llvm.sh
 tar -xf /opt/installer/MPLABX-*-linux-installer.tar
 USER=root ./MPLABX-*-linux-installer.sh  --nox11 -- --unattendedmodeui none --mode unattended --installdir /opt/microchip/mplabx
 
+/bin/bash /opt/microchip/mplabx/mplab_platform/bin/packmanagercli.sh  --update-packs
+
 /tmp/llvm.sh all
 
 CLANGD_EXE=$(ls -1 /usr/bin/clangd-* | sort -hr | head -n1)

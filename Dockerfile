@@ -16,6 +16,6 @@ RUN touch /home/crossbuilder/target.ARMHF-BOOKWORM
 COPY build.sh /tmp/build.sh
 RUN /bin/bash /tmp/build.sh
     
-ENV PATH=$PATH:/opt/microchip/xc8/bin:/opt/microchip/mplabx/mplab_ide/bin
+ENV PATH=$PATH:/opt/microchip/xc8/bin:/opt/microchip/mplabx/mplab_platform/bin
 
 RUN /bin/bash
