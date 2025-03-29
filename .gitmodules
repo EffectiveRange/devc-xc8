@@ -1,0 +1,3 @@
+[submodule "devc-effectiverange"]
+	path = devc-effectiverange
+	url = https://github.com/EffectiveRange/devc-effectiverange.git
