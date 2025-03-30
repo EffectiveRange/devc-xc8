@@ -49,6 +49,10 @@ rm -rf /tmp/bootstrap_pipx
 # install dpkgdeps
 /home/crossbuilder/scripts/build_steps_amd64/125-dpkgdeps /home/crossbuilder/target
 
+# install coverage tools
+pipx install --global gcovr
+pipx install --global markdownify 
+
 # Clean up
 rm -rf /tmp/* 
 apt-get clean 
