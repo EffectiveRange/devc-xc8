@@ -31,6 +31,8 @@ wget https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocum
 chmod a+x /tmp/xc8-v$XC8_VERSION-full-install-linux-x64-installer.run 
 /tmp/xc8-v$XC8_VERSION-full-install-linux-x64-installer.run --mode unattended --unattendedmodeui none --netservername localhost --LicenseType FreeMode --prefix /opt/microchip/xc8 
 
+rm -vf /tmp/xc8-v$XC8_VERSION-full-install-linux-x64-installer.run
+
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 wget -O - https://apt.llvm.org/llvm.sh > /tmp/llvm.sh 
 chmod +x /tmp/llvm.sh 
