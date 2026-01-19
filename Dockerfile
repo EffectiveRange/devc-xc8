@@ -7,6 +7,11 @@ ENV PACKAGING_TOOLS_VER=${PACKAGING_TOOLS_VER}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY ./devc-effectiverange/apt-ci-hardening /etc/apt/apt.conf.d/99-ci-hardening
+COPY --chmod=0755 ./devc-effectiverange/retry /usr/local/bin/retry
+COPY --chmod=0755 ./devc-effectiverange/apt_update /usr/local/bin/apt_update
+COPY --chmod=0755 ./devc-effectiverange/apt_install /usr/local/bin/apt_install
+
 # mock effectiverange devc build settings
 RUN groupadd -g $BUILD_GID crossbuilder && \
     useradd -d /home/crossbuilder -m -g $BUILD_GID -u $BUILD_UID -s /bin/bash crossbuilder 

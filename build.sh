@@ -5,8 +5,8 @@ set -e -x -o pipefail
 
 # Microchip Tools Require i386 Compatability as Dependency
 dpkg --add-architecture i386 
-apt-get update -yq 
-apt-get install -yq --no-install-recommends build-essential bzip2 cpio curl unzip wget libc6:i386 libx11-6:i386 libxext6:i386 libstdc++6:i386 libexpat1:i386  libxext6 libxrender1 libxtst6 libgtk2.0-0 libxslt1.1 libncurses5-dev gcc python3 python3-pip python3.11-venv inetutils-ping openssh-client pkg-config dpkg-dev nano git sudo gnupg lsb-release software-properties-common procps libusb-1.0-0-dev file less gdb
+apt_update -yq 
+apt_install -yq --no-install-recommends build-essential bzip2 cpio curl unzip wget libc6:i386 libx11-6:i386 libxext6:i386 libstdc++6:i386 libexpat1:i386  libxext6 libxrender1 libxtst6 libgtk2.0-0 libxslt1.1 libncurses5-dev gcc python3 python3-pip python3.11-venv inetutils-ping openssh-client pkg-config dpkg-dev nano git sudo gnupg lsb-release software-properties-common procps libusb-1.0-0-dev file less gdb
 
 # add ER repo
 wget -qO- https://raw.githubusercontent.com/EffectiveRange/infrastructure-configuration/refs/heads/main/aptrepo/apt-server/add_repo.sh | bash
@@ -45,7 +45,7 @@ USER=root ./MPLABX-*-linux-installer.sh  --nox11 -- --unattendedmodeui none --mo
 
 CLANGD_EXE=$(ls -1 /usr/bin/clangd-* | sort -hr | head -n1)
 LLVM_VERSION=$(echo $CLANGD_EXE | cut -d- -f2)
-apt-get install -y --no-install-recommends clang-format-$LLVM_VERSION
+apt_install -y --no-install-recommends clang-format-$LLVM_VERSION
 # Add in unversioned symlinks for clangd and clang-format
 ln -sfv $CLANGD_EXE /usr/bin/clangd
 ln -sfv /usr/bin/clang-format-$LLVM_VERSION /usr/bin/clang-format
