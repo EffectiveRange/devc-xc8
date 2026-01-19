@@ -41,6 +41,9 @@ USER=root ./MPLABX-*-linux-installer.sh  --nox11 -- --unattendedmodeui none --mo
 
 /bin/bash /opt/microchip/mplabx/mplab_platform/bin/packmanagercli.sh  --update-packs
 
+# free up space
+rm -vf /opt/installer/MPLABX-*-linux-installer.tar
+
 /tmp/llvm.sh all
 
 CLANGD_EXE=$(ls -1 /usr/bin/clangd-* | sort -hr | head -n1)
