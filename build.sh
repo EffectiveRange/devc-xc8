@@ -14,11 +14,11 @@ wget -qO- https://raw.githubusercontent.com/EffectiveRange/infrastructure-config
 # install packaging tools
 . /etc/os-release && \
 if [ "${PACKAGING_TOOLS_VER}" = "latest" ]; then \
-    apt_install -y packaging-tools; \
+    apt_install -y --no-install-recommends packaging-tools; \
 else \
     wget -O /tmp/packaging-tools.deb \
     "https://github.com/EffectiveRange/packaging-tools/releases/download/${PACKAGING_TOOLS_VER}/${VERSION_CODENAME}_packaging-tools_${PACKAGING_TOOLS_VER#v}-1_all.deb" && \
-    apt install -y /tmp/packaging-tools.deb && \
+    apt_install -y --no-install-recommends /tmp/packaging-tools.deb && \
     rm -f /tmp/packaging-tools.deb; \
 fi
 
