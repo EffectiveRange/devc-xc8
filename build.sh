@@ -11,17 +11,6 @@ apt_install -yq --no-install-recommends build-essential bzip2 cpio curl unzip wg
 # add ER repo
 wget -qO- https://raw.githubusercontent.com/EffectiveRange/infrastructure-configuration/refs/heads/main/aptrepo/apt-server/add_repo.sh | bash
 
-# install packaging tools
-. /etc/os-release && \
-if [ "${PACKAGING_TOOLS_VER}" = "latest" ]; then \
-    apt_install -y --no-install-recommends packaging-tools; \
-else \
-    wget -O /tmp/packaging-tools.deb \
-    "https://github.com/EffectiveRange/packaging-tools/releases/download/${PACKAGING_TOOLS_VER}/${VERSION_CODENAME}_packaging-tools_${PACKAGING_TOOLS_VER#v}-1_all.deb" && \
-    apt_install -y --no-install-recommends /tmp/packaging-tools.deb && \
-    rm -f /tmp/packaging-tools.deb; \
-fi
-
 
 XC8_VERSION=3.10
         
@@ -86,6 +75,17 @@ EOF
 equivs-build fake-cmake
 
 dpkg -i fake-cmake_*.deb
+
+# install packaging tools after cmake version has settled
+. /etc/os-release && \
+if [ "${PACKAGING_TOOLS_VER}" = "latest" ]; then \
+    apt_install -y --no-install-recommends packaging-tools; \
+else \
+    wget -O /tmp/packaging-tools.deb \
+    "https://github.com/EffectiveRange/packaging-tools/releases/download/${PACKAGING_TOOLS_VER}/${VERSION_CODENAME}_packaging-tools_${PACKAGING_TOOLS_VER#v}-1_all.deb" && \
+    apt_install -y --no-install-recommends /tmp/packaging-tools.deb && \
+    rm -f /tmp/packaging-tools.deb; \
+fi
 
 # Bootstrap pipx with pipx
 python3 -m venv /tmp/bootstrap_pipx
