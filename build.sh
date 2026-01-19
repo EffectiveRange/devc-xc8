@@ -56,7 +56,8 @@ ln -sfv $CLANGD_EXE /usr/bin/clangd
 ln -sfv /usr/bin/clang-format-$LLVM_VERSION /usr/bin/clang-format
 ln -sfv /usr/bin/clang-format-diff-$LLVM_VERSION /usr/bin/clang-format-diff
 
-# Install latest stable CMake 
+# Install latest stable CMake but remove the installed one first
+apt remove -y cmake || true
 CMAKE_VERSION=3.29.6
 # Install latest stable CMake 
 wget -O - https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-linux-x86_64.sh > /tmp/cmake_install.sh
