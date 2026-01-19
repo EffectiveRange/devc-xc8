@@ -2,6 +2,8 @@ FROM effectiverange/mplabx-base-bookworm:latest
 
 ARG BUILD_UID=499
 ARG BUILD_GID=499
+ARG PACKAGING_TOOLS_VER=latest
+ENV PACKAGING_TOOLS_VER=${PACKAGING_TOOLS_VER}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
