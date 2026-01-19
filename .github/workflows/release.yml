@@ -23,6 +23,7 @@ jobs:
         uses: EffectiveRange/ci-workflows/.github/workflows/accept-repository-dispatch.yaml@v1_repodispatch
         with:
             versioned_dispatch_type: EffectiveRange/packaging-tools
+            main_branch: master
 
     build-and-publish:
         runs-on: ubuntu-latest
