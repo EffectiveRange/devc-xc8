@@ -24,25 +24,9 @@ jobs:
         with:
             versioned_dispatch_type: EffectiveRange/packaging-tools
 
-    prepare_packaging_tools_ver:
-        name: Prepare Packaging Tools Version
-        runs-on: ubuntu-latest
-        needs: prepare_release
-        outputs:
-          packaging_tools_ver: ${{ steps.set_packaging_tools_ver.outputs.packaging_tools_ver }}
-        steps:
-        - name: Set Packaging Tools Version
-          id: set_packaging_tools_ver
-          run: |
-            if [ "${{ needs.prepare_release.outputs.dispatch_type}}" == "EffectiveRange/packaging-tools" ]; then
-                echo "packaging_tools_ver=${{ needs.prepare_release.outputs.payload_version }}" >> $GITHUB_OUTPUT
-            else
-                echo "packaging_tools_ver=latest" >> $GITHUB_OUTPUT
-            fi
-
     build-and-publish:
         runs-on: ubuntu-latest
-        needs: [prepare_release,prepare_packaging_tools_ver]
+        needs: prepare_release
         steps:
         - 
             name: Free runner disk space
@@ -103,7 +87,7 @@ jobs:
                 tags: ${{ steps.meta.outputs.tags }}
                 labels: ${{ steps.meta.outputs.labels }}
                 build-args: |
-                    PACKAGING_TOOLS_VER=${{ needs.prepare_packaging_tools_ver.outputs.packaging_tools_ver }}
+                    PACKAGING_TOOLS_VER=${{ needs.prepare_release.outputs.base_version }}
 
               
             
